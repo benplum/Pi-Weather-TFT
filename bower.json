@@ -1,0 +1,16 @@
+{
+  "name": "PiWeather",
+  "version": "0.0.1",
+  "authors": [
+    "Ben Plum <mr@benplum.com>"
+  ],
+  "description": "Raspberry Pi Weather Display",
+  "main": "index.html",
+  "license": "MIT",
+  "private": true,
+  "dependencies": {
+    "weather-icons": "~2.0.10",
+    "simpleWeather": "~3.0.2",
+    "normalize": "~1.0.4"
+  }
+}
