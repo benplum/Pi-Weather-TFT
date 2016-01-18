@@ -1,10 +1,26 @@
+var $today,
+	$forcast,
+	$toolbar;
+
 $(document).ready(function() {
-	geatWeather();
+	$today    = $(".js-today");
+	$forecast = $(".js-forecast");
+	$toolbar  = $(".js-toolbar");
+
+	$toolbar.on("click", ".js-refresh", onRefresh);
+
+	getWeather();
+	drawTime();
 
 	setInterval(getWeather, 600000);
-
-	$(".refresh").on("click", onRefresh);
+	setInterval(drawTime, 1000);
 });
+
+function drawTime() {
+	var time = moment();
+
+	$today.find(".js-time").html(time.format('h:mm'));
+}
 
 function getWeather() {
 	$.simpleWeather({
@@ -19,15 +35,39 @@ function getWeather() {
 function drawWeather(weather) {
 	console.log(weather);
 
-	html = '<h2><i class="wi wi-yahoo-'+weather.code+'"></i> '+weather.temp+'&deg;'+weather.units.temp+'</h2>';
-	html += '<ul><li>'+weather.city+', '+weather.region+'</li>';
-	html += '<li class="currently">'+weather.currently+'</li>';
-	html += '<li>'+weather.wind.direction+' '+weather.wind.speed+' '+weather.units.speed+'</li></ul>';
+	var date = moment(weather.date);
 
-	html += 'Width: ' + $(window).width() + "<br>";
-	html += 'Height: ' + $(window).height() + "<br>";
+	// Today
 
-	$("#weather").html(html);
+	$today.find(".js-date").html(date.format('ddd, MMM M YYYY'));
+
+	$today.find(".js-icon").html('<i class="wi wi-yahoo-' + weather.code + '"></i>');
+	$today.find(".js-currently").html(weather.currently);
+
+	$today.find(".js-temp").html(weather.temp + '&deg;'/*  + weather.units.temp */);
+	$today.find(".js-low").html(weather.low + '&deg;'/*  + weather.units.temp */);
+	$today.find(".js-high").html(weather.high + '&deg;'/*  + weather.units.temp */);
+
+	// Forecast
+	var day,
+		date,
+		html = '';
+
+	for (var i = 0; i < weather.forecast.length; i++) {
+		day = weather.forecast[i];
+
+		html += '<div class="day">';
+		html += '<div class="day_name left">' + day.day + '</div>';
+		html += '<div class="day_icon left"><i class="wi wi-yahoo-' + day.code + '"></i></div>';
+		html += '<div class="day_temp right">' + day.high + '&deg;</div>';
+		html += '</div>';
+	}
+
+	$forecast.html(html);
+
+	// Location
+
+	$toolbar.find(".js-location").html(weather.city + ", " + weather.region);
 }
 
 function onError(error) {
@@ -35,5 +75,5 @@ function onError(error) {
 }
 
 function onRefresh() {
-	window.location.refresh();
+	window.location.reload();
 }

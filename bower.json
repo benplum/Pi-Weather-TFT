@@ -11,6 +11,8 @@
   "dependencies": {
     "weather-icons": "~2.0.10",
     "simpleWeather": "~3.0.2",
-    "normalize": "~1.0.4"
+    "moment": "~2.11.1",
+    "normalize-css": "~3.0.3",
+    "jquery": "~2.2.0"
   }
 }

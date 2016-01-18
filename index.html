@@ -11,22 +11,43 @@
 		<meta name="description" content="">
 
 		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,300,600">
-		<link rel="stylesheet" href="components/normalize/normalize.min.js">
+		<link rel="stylesheet" href="components/normalize-css/normalize.css">
 		<link rel="stylesheet" href="components/weather-icons/css/weather-icons.min.css">
 		<link rel="stylesheet" href="css/site.css">
 
 		<script src="components/jquery/dist/jquery.min.js"></script>
+		<script src="components/moment/min/moment.min.js"></script>
 		<script src="components/simpleWeather/jquery.simpleWeather.min.js"></script>
 		<script src="js/site.js"></script>
 	</head>
-	<body class="fs-grid fs-grid-sm-fluid">
+	<body>
 
-		<div id="weather">
+		<div class="today js-today">
+			<div class="today_top">
+				<div class="today_date left js-date"></div>
+				<div class="today_time right js-time"></div>
+			</div>
+			<div class="today_middle">
+				<div class="today_icon js-icon"></div>
+				<div class="today_currently js-currently"></div>
+			</div>
+			<div class="today_bottom">
+				<div class="today_temp js-temp"></div>
+				<div class="today_low_high">
+					<div class="today_low js-low"></div>
+					<div class="today_high js-high"></div>
+				</div>
+			</div>
+		</div>
+
+		<div class="forecast js-forecast">
 
 		</div>
 
-
-		<button type="button" class="refresh"><i class="wi wi-refresh"></i> Refresh</button>
+		<div class="toolbar js-toolbar">
+			<span type="button" class="toolbar_item left js-location"></span>
+			<button type="button" class="toolbar_item right js-refresh"><i class="wi wi-refresh"></i> Refresh</button>
+		</div>
 
 	</body>
 </html>
