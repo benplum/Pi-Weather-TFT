@@ -80,7 +80,7 @@
 	.today_middle {
 		position: absolute;
 		right: 0;
-		top: 42%;
+		top: 47%;
 		left: 0;
 
 		-webkit-transform: translateY(-50%);
@@ -89,15 +89,15 @@
 
 	.today_icon {
 		color: #fff;
-		font-size: 70px;
-		line-height: 60px;
+		font-size: 65px;
+		line-height: 50px;
 		text-align: center;
 	}
 
 	.today_currently {
 		color: #fff;
-		font-size: 14px;
-		margin: 5px 0 0;
+		font-size: 12px;
+		margin: 3px 0 0;
 		opacity: 0.75;
 		text-align: center;
 		text-transform: uppercase;
@@ -150,7 +150,7 @@
 	}
 
 	.day {
-		border-bottom: 1px solid #ccc;
+		border-bottom: 1px solid #eee;
 		overflow: hidden;
 		padding: 12px 0;
 	}

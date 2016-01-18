@@ -47,7 +47,7 @@ function drawWeather(weather) {
 
 	// Today
 
-	$today.find(".js-date").html(date.format('ddd, MMM M YYYY'));
+	$today.find(".js-date").html(date.format('ddd, MMM D YYYY'));
 
 	$today.find(".js-icon").html('<i class="wi wi-yahoo-' + weather.code + '"></i>');
 	$today.find(".js-currently").html(weather.currently);
