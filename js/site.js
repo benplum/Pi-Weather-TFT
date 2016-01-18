@@ -1,8 +1,16 @@
 var $today,
 	$forcast,
-	$toolbar;
+	$toolbar,
+	loc;
 
 $(document).ready(function() {
+	loc = window.location.hash.replace("#", "");
+
+	if (!loc) {
+		loc = window.prompt("Enter Your Location", "Baltimore, MD");
+		window.location.hash = loc;
+	}
+
 	$today    = $(".js-today");
 	$forecast = $(".js-forecast");
 	$toolbar  = $(".js-toolbar");
@@ -24,7 +32,7 @@ function drawTime() {
 
 function getWeather() {
 	$.simpleWeather({
-		location: '21211',
+		location: loc,
 		woeid: '',
 		unit: 'f',
 		success: drawWeather,
